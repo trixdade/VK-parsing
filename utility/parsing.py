@@ -14,9 +14,9 @@ stop = 0
 def get_likes(
     owner_id: int, 
     item_id: int, 
-    count: int = 100, 
-    counts_amount: int = 100, 
-    offset_step: int = 100
+    count: int = 1000, 
+    offset_step: int = 1000,
+    max_likes: int = 10000
     ) -> list:
 
     """
@@ -26,7 +26,7 @@ def get_likes(
     all_likes = []
     
     global stop
-    for offset in range(0, count*counts_amount, offset_step):
+    for offset in range(0, max_likes, offset_step):
         if stop%3 == 0:
             sleep(1)
 
@@ -36,6 +36,7 @@ def get_likes(
                 'type': 'post',
                 'access_token': token, 
                 'owner_id': owner_id, 
+                'count': count,
                 'item_id': item_id, 
                 'offset': offset,
                 'v':5.131
@@ -48,7 +49,6 @@ def get_likes(
             sleep(1)
             req = requests.get(url, params=request_params)
             likes = req.json()['response']['items']
-                
 
         if (len(likes)) == 0:
             break
