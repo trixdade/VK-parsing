@@ -61,7 +61,7 @@ def get_posts(
     group_name: str, 
     count: int = 100, 
     counts_amount: int = 5, 
-    offset_step: int = 100
+    offset_step: int = 100,
     ) -> list:
 
     all_posts = []
@@ -76,10 +76,11 @@ def get_posts(
             'fields': 'id',
             'v':5.131
             })
+        print(req.json())
         posts = req.json()['response']['items']
         all_posts.extend(posts)
-        
     return all_posts
+
 
 def get_post_data(post: dict) -> dict:
     try:
