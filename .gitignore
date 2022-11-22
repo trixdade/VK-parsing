@@ -1,8 +1,8 @@
 # Ignore csv files
-.csv
+*.csv
 
 # Ignore pickle files
-.pickle
+*.pickle
 
 # Ignore all log files
 *.log
@@ -14,7 +14,10 @@ photos
 data
 
 #Ignore ipynb checkpoints
-.ipynb_checkpoints
+*.ipynb_checkpoints
 
 #Ignore __pycache__ folder
 __pycache__
+
+#Ignore auth_data
+auth_data.py
